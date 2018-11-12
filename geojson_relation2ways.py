@@ -1,7 +1,13 @@
 import json
+import sys
 
+# USAGE: python relation2ways.py in.json out.json
+# or in.geojson...
 
-with open('DNP_HIKINR_ROUTES.geojson') as f:
+if len(sys.argv) < 3:
+    sys.exit("ERROR! run: \"python relation2ways.py in.json out.json\"")
+
+with open(sys.argv[1]) as f:
     data = json.load(f)
 
 for feature in data['features']:
@@ -33,4 +39,7 @@ for feature in data['features']:
             i += 1
 
 with open('out.geojson', 'w') as outfile:
+    print("Writing to " + sys.argv[2])
     json.dump(data, outfile)
+
+print("done.")
