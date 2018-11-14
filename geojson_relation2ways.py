@@ -42,4 +42,6 @@ with open('out.geojson', 'w') as outfile:
     print("Writing to " + sys.argv[2])
     json.dump(data, outfile)
 
-print("done.")
+print("done. Press enter to exit...")
+
+input()
